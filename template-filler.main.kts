@@ -6,6 +6,7 @@ val modName = modId.split("-").joinToString(" ") { it.capitalize() }
 val modEntryName = "Gunpowder${modName.split(" ").joinToString("")}Module"
 val modMixinName = "mixins.$modId.gunpowder.json"
 val modMixinPlugin = "${modName.split(" ").joinToString("")}ModulePlugin"
+val markdownName = "Gunpowder${modName.split(" ").joinToString("")}"
 
 
 println("Editing fabric.mod.json")
@@ -52,6 +53,20 @@ File("settings.gradle").apply {
     val gradleBody = readText()
         .replace("gunpowder-template", "gunpowder-$modId")
     writeText(gradleBody)
+}
+
+println("Editing README.md")
+File("README.md").apply {
+    val mdBody = readText()
+        .replace("GunpowderTemplate", markdownName)
+    writeText(mdBody)
+}
+
+println("Editing CHANGELOG.md")
+File("CHANGELOG.md").apply {
+    val mdBody = readText()
+        .replace("GunpowderTemplate", markdownName)
+    writeText(mdBody)
 }
 
 println("Detaching from git")
