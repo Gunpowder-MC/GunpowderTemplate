@@ -32,4 +32,8 @@ object GunpowderTemplateModule : GunpowderModule {
     override val toggleable = true
     val gunpowder: GunpowderMod
         get() = GunpowderMod.instance
+
+    fun onLoad() {
+
+    }
 }

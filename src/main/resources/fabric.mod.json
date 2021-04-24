@@ -9,7 +9,10 @@
   "environment": "*",
   "entrypoints": {
     "gunpowder:modules": [
-      "io.github.gunpowder.GunpowderTemplateModule"
+      {
+        "adapter": "kotlin",
+        "value": "io.github.gunpowder.GunpowderTemplateModule"
+      }
     ]
   },
   "mixins": [
