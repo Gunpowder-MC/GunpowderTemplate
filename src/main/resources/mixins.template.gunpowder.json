@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "io.github.gunpowder.mixin.template",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "plugin": "io.github.gunpowder.mixin.plugin.TemplateModulePlugin",
   "mixins": [
   ],
