@@ -8,7 +8,7 @@
   "icon": "assets/gunpowder/icon.png",
   "environment": "*",
   "entrypoints": {
-    "gunpowder:modules": [
+    "gunpowder:module": [
       {
         "adapter": "kotlin",
         "value": "io.github.gunpowder.GunpowderTemplateModule"

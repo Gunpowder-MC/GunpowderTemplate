@@ -19,15 +19,6 @@ File("src/main/resources/fabric.mod.json").apply {
     File("src/main/resources/fabric.mod.json").writeText(fabricJson)
 }
 
-println("Editing mixins.template.gunpowder.json")
-File("src/main/resources/mixins.template.gunpowder.json").apply {
-    val mixinJson = readText()
-        .replace("io.github.gunpowder.mixin.template", "io.github.gunpowder.mixin.$modId")
-        .replace("TemplateModulePlugin", modMixinPlugin)
-    writeText(mixinJson)
-    renameTo(File("src/main/resources/$modMixinName"))
-}
-
 println("Editing GunpowderTemplateModule.kt")
 File("src/main/kotlin/io/github/gunpowder/GunpowderTemplateModule.kt").apply {
     val kotlinBody = readText()
@@ -37,19 +28,18 @@ File("src/main/kotlin/io/github/gunpowder/GunpowderTemplateModule.kt").apply {
     renameTo(File("src/main/kotlin/io/github/gunpowder/$modEntryName.kt"))
 }
 
-println("Editing TemplateModulePlugin.kt")
-File("src/main/kotlin/io/github/gunpowder/mixin/plugin/TemplateModulePlugin.kt").apply {
-    val kotlinBody = readText()
-        .replace("TemplateModulePlugin", modMixinPlugin)
-    writeText(kotlinBody)
-    renameTo(File("src/main/kotlin/io/github/gunpowder/mixin/plugin/$modMixinPlugin.kt"))
-}
-
 println("Renaming mixin folder")
 File("src/main/java/io/github/gunpowder/mixin/template").renameTo(File("src/main/java/io/github/gunpowder/mixin/$modId"))
 
-println("Editing settings.gradle")
-File("settings.gradle").apply {
+println("Editing build.gradle.kts")
+File("settings.gradle.kts").apply {
+    val gradleBody = readText()
+        .replace("\"template\"", "$modId")
+    writeText(gradleBody)
+}
+
+println("Editing settings.gradle.kts")
+File("settings.gradle.kts").apply {
     val gradleBody = readText()
         .replace("gunpowder-template", "gunpowder-$modId")
     writeText(gradleBody)

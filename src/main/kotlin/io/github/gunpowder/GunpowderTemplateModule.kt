@@ -24,12 +24,10 @@
 
 package io.github.gunpowder
 
-import io.github.gunpowder.api.GunpowderMod
 import io.github.gunpowder.api.GunpowderModule
 
-object GunpowderTemplateModule : GunpowderModule {
+object GunpowderTemplateModule : GunpowderModule() {
     override val name = "template"
+    override val priority = 1000
     override val toggleable = true
-    val gunpowder: GunpowderMod
-        get() = GunpowderMod.instance
 }
